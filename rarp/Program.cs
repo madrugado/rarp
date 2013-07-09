@@ -40,10 +40,12 @@ namespace rarp
             string[] b = new string[6];
             byte[] res = new byte[6];
             if (mac.Contains("-"))
-                b = mac.Split('-');
-            else if (mac.Contains(":"))
-                b = mac.Split(':');
-            else if (mac.Length != 12 || b.Length != 6)
+                mac.Replace("-", "");
+            if (mac.Contains(":"))
+                mac.Replace(":", "");
+            if (mac.Contains("."))
+                mac.Replace(".", "");
+            if (mac.Length != 12)
                 throw new FormatException("MAC address should be delimited by ':' or '-'.\n" +
                                           "Alternatively it should have exactly 12 hexadecimal characters.");
             else
