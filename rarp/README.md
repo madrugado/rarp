@@ -22,4 +22,4 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 This is C# implementation of RARP (Inverse ARP, actually). It uses only CLR 2.0 features, so it should 
 work on almost every recently used Windows PC (starting from Windows XP, since it uses iphlpapi.dll).
-It is single-threaded, so resolving IP may take a while.
+It is console application. It is single-threaded, so resolving IP may take a while.
