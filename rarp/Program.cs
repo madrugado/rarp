@@ -18,19 +18,17 @@ namespace rarp
         {
             byte[] pMac = StringToBytesMAC(mac);
             byte[] tempMac = new byte[6];
-            int len = 6;
 
             foreach (NetworkInterface adapter in NetworkInterface.GetAllNetworkInterfaces())
                 foreach (UnicastIPAddressInformation ipInfo in adapter.GetIPProperties().UnicastAddresses)
                     if (ipInfo.Address.AddressFamily == AddressFamily.InterNetwork)
-                    {
                         foreach (int ip in GetNeighbourIP(ipInfo.Address, ipInfo.IPv4Mask))
                         {
+                            int len = 6;
                             if (SendARP(ip, 0, tempMac, ref len) == 0
                                 && compareMac(pMac, tempMac) == true)
                                 return new IPAddress(ip).ToString();
                         }
-                    }
 
             return null;
         }
@@ -71,7 +69,7 @@ namespace rarp
 
             for (uint tempIP = iNet + 1; tempIP < iNet + ~iMask; tempIP++)
                 if (tempIP != iIP)
-                    yield return IPAddress.HostToNetworkOrder((int) tempIP);
+                    yield return IPAddress.NetworkToHostOrder((int)tempIP);
         }
 
         private static bool compareMac(byte[] first, byte[] second)
