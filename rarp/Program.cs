@@ -26,11 +26,11 @@ namespace rarp
                         {
                             int len = 6;
                             if (SendARP(ip, 0, tempMac, ref len) == 0
-                                && compareMac(pMac, tempMac) == true)
-                                return new IPAddress(ip).ToString();
+                                    && compareMac(pMac, tempMac) == true)
+                                return new IPAddress((long) ((ulong)ip & 0x00000000fffffffful)).ToString();
                         }
 
-            return null;
+            return "";
         }
 
         private static byte[] StringToBytesMAC(string mac)
