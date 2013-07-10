@@ -22,4 +22,5 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 This is C# implementation of RARP (Inverse ARP, actually). It uses only CLR 2.0 features, so it should 
 work on almost every recently used Windows PC (starting from Windows XP, since it uses iphlpapi.dll).
-It is console application. It is single-threaded, so resolving IP may take a while.
+It is a console application taking as input MAC address desired to be resolved and outputting IP address 
+if resolving successed and nothing otherwise. It is single-threaded, so resolving may take a while.
